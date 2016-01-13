@@ -67,6 +67,7 @@ function create_pancakes()
 		//console.log(positions);
 	}
 
+	/*
 	var t = document.createTextNode("Flip!");
 
 	//Dropdown list to flip pancakes
@@ -82,7 +83,15 @@ function create_pancakes()
 	flip_button.appendChild(t);
 
 	//dropdown_list.appendChild(t);
+	*/
+	
+	var optionStr = "";
 
+	var ag = document.getElementById("actual_game");
+	var dumb = document.createElement("div");
+	dumb.setAttribute("id","dumb");
+	ag.appendChild(dumb);
+	
 	for(var i = 0; i < positions.length; i++)
 	{
 		ctx.fillStyle = "brown";
@@ -92,15 +101,27 @@ function create_pancakes()
 		ctx.fill();
 		ctx.closePath();
 		//ctx.fillStyle = "brown";
+		
+		//b = document.createElement("BUTTON");
+		//b.setAttribute("onclick","flip_time(i)");
+		//ag.appendChild(b);
 
-		optionStr+="<option value="+i+">"+i+"</option>";
+		//optionStr+="<option value="+i+">"+i+"</option>";
+		
+		//var label = document.createTextNode(i);
+		
+		optionStr+="<button onclick=flip_time("+i+")>"+i+"</button>";
 	}
+	
+	dumb.innerHTML += optionStr;
 
+	/*
 	dropdown_list.innerHTML = optionStr;
-	var ag = document.getElementById("actual_game");
+	//var ag = document.getElementById("actual_game");
 	ag.appendChild(dropdown_list);
 	ag.appendChild(flip_button);
-
+	*/
+	
 	/*
 	function flip_time(n)
 	{
