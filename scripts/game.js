@@ -114,6 +114,8 @@ function create_pancakes()
 	}
 	
 	dumb.innerHTML += optionStr;
+	
+	//want the buttons vertical and to the right
 
 	/*
 	dropdown_list.innerHTML = optionStr;
@@ -145,7 +147,6 @@ function create_pancakes()
 	*/
 };
 
-/*Doesn't call if you try to flip the same pancake twice*/
 function flip_time(n)
 {
 	console.log("Calling flip_time()");
