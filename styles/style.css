@@ -1,0 +1,125 @@
+/*God how the hell does CSS work*/
+
+body
+{
+	background: #99e6ff;
+}
+
+button
+{
+	/*http://www.w3schools.com/html/tryit.asp?filename=tryhtml_lists_menu*/
+	/*display: inline;*/
+	/*margin: 10px 0;*/
+	background-color: #b37700;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 4px 4px;
+	border: outset;
+	width: 90px;
+}
+
+h1#title
+{
+	/*position: absolute;
+	top: 10%;
+	left: 50%;
+	margin-right: -50%;*/
+	
+	font-size: 5em;
+	font-family: "Verdana", sans-serif;
+}
+
+div#title_menu
+{	
+	/*Copied this straight from
+	http://www.w3.org/Style/Examples/007/center.en.html*/
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+ul#menu
+{
+	padding: 0px;
+}
+
+ul#menu li
+{
+	/*display: inline;*/
+	display: block;
+	/*padding: 1px;*/
+	/*margin-top: 25px;*/
+}
+
+ul#menu li button
+{
+	/*http://www.w3schools.com/html/tryit.asp?filename=tryhtml_lists_menu*/
+	/*display: inline;*/
+	/*margin: 10px 0;*/
+	background-color: #b37700;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 4px 4px;
+	border: outset;
+	width: 110px;
+	text-align: left;
+}
+
+div#difficulty
+{
+	font-size: 1.5em;
+}
+
+input#diff_num
+{
+	height: 150%;
+	/*width: 150%;*/
+}
+
+div#actual_game
+{
+	display: none;
+}
+
+canvas#myCanvas
+{
+	/*display: none;*/
+	/*width: 600px;
+	height: 600px;
+	http://stackoverflow.com/questions/3991113/html5-canvas-stroke-thick-and-fuzzy*/
+	border: solid 1px;
+}
+
+#difficulty
+{
+	display: none;
+}
+
+#exit_to_screen
+{
+	display: none;
+	position: relative;
+	top: 1px;
+	/*left: 1px;*/
+}
+
+select#dropdown_list
+{
+	position: relative;
+	top: -500px;
+	width: 100px;
+	height: 80px;
+}
+
+/*
+http://stackoverflow.com/questions/7208786/how-to-style-the-option-of-a-html-select
+select#dropdown_list option
+{
+	width: 100px;
+	height: 80px;
+}
+*/

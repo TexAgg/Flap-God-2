@@ -1,0 +1,38 @@
+<!--Flap God 2-->
+<!Doctype html>
+<html>
+<head>
+	<title>Flap God 2</title>
+	<meta name="author" content="Matt Gaikema"></meta>
+	<meta name="description" content="A reimagined and 
+	modern take on a classic game"></meta>
+	<meta name="keywords" content="pancakes,flap,god,jesus,religion,FalloutIV"></meta>
+	<link rel="stylesheet" href="styles/style.css"></link>
+	<link rel="icon" href="media/eminem.jpg"></link>
+	<!--view-source:http://ismlhrated5stars.com/-->
+	<audio src="media/rapgod.mp3" type="audio/mpeg" preload="auto" autoplay></audio>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="scripts/game.js"></script>
+</head>
+<body>
+	<div id="title_menu">
+	<h1 id="title">Flap God 2</h1>
+	<ul id="menu">
+		<li><button onclick="remove_title()">New Game</button></li>
+		<li><button onclick='alert("This feature does not exist yet")'>Rules</button></li>
+		<li><button onclick='alert("This feature does not exist yet")'>Scores</button></li>
+		<li><button onclick=location.href="http://www.ea.com/">Purchases</button></li>
+		<li><button onclick='alert("This feature does not exist yet")'>Exit</button></li>
+	</ul>
+	</div>
+	<div id="difficulty">
+	Difficulty:
+	<input id="diff_num" type="number" min="2" max="9" value="2"></input>
+	<button onclick="begin_game()">Let's Go!</button>
+	</div>
+	<div id="actual_game">
+	<canvas id="myCanvas" width="600" height="600"></canvas>
+	</div>
+	<button id="exit_to_screen" onclick="return_to_screen()">Return to main menu</button>
+</body>
+</html>
