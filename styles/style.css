@@ -25,13 +25,13 @@ h1#title
 	top: 10%;
 	left: 50%;
 	margin-right: -50%;*/
-	
+
 	font-size: 5em;
 	font-family: "Verdana", sans-serif;
 }
 
 div#title_menu
-{	
+{
 	/*Copied this straight from
 	http://www.w3.org/Style/Examples/007/center.en.html*/
 	position: absolute;
@@ -71,6 +71,7 @@ ul#menu li button
 
 div#difficulty
 {
+display: none;
 	font-size: 1.5em;
 }
 
@@ -94,10 +95,19 @@ canvas#myCanvas
 	border: solid 1px;
 }
 
+/*
 #difficulty
 {
 	display: none;
 }
+*/
+
+/*
+input#current_score
+{
+	position: absolute;
+}
+*/
 
 #exit_to_screen
 {
