@@ -1,0 +1,6 @@
+Instructions:
+Select the difficulty (the number of pancakes you want to flip).
+Once the game starts, the pancakes, which will
+be of varying sizes, will be stacked in a random
+order. Click the button with the number of the
+pancake you want to flip (numbered from top to bottom).

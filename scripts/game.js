@@ -12,6 +12,19 @@ function remove_title()
 	//$("#pepe-id").hide();
 };
 
+function show_rules()
+{
+	//remove_title();
+	$('#title_menu').hide();
+	$("#exit_to_screen").show();
+	
+	var rules = document.createElement("IMG");
+	rules.setAttribute("id","rules");
+	rules.setAttribute("src","media/rules.png");
+	
+	document.body.appendChild(rules);
+}
+
 function begin_game()
 {
 	$("#difficulty").hide();
