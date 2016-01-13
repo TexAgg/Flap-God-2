@@ -67,25 +67,31 @@ function create_pancakes()
 		//console.log(positions);
 	}
 	
-	//var t = document.createTextNode("Selecte the number of the pancake you want to flip!");
+	var t = document.createTextNode("Flip!");
 	
 	//Dropdown list to flip pancakes
 	//Buttons would be ideal if i can figure them out
 	var dropdown_list = document.createElement("select");
 	dropdown_list.setAttribute("id","dropdown_list");
-	dropdown_list.setAttribute("onchange", "flip_time(this.value)");
+	//dropdown_list.setAttribute("onchange", "flip_time(this.value)");
 	var optionStr = '';
+	
+	var flip_button = document.createElement("button");
+	flip_button.setAttribute("id", "flip_button");
+	flip_button.setAttribute("onclick","flip_time(dropdown_list.value)");
+	flip_button.appendChild(t);
 	
 	//dropdown_list.appendChild(t);
 	
 	for(var i = 0; i < positions.length; i++)
 	{
+		ctx.fillStyle = "brown";
 		ctx.beginPath();
 		ctx.ellipse(300,25+55*i,75+25*positions[i],25,0,0,2 * Math.PI);
 		ctx.stroke();
 		ctx.fill();
 		ctx.closePath();
-		ctx.fillStyle = "brown";
+		//ctx.fillStyle = "brown";
 		
 		optionStr+="<option value="+i+">"+i+"</option>";
 	}
@@ -93,7 +99,8 @@ function create_pancakes()
 	dropdown_list.innerHTML = optionStr;
 	var ag = document.getElementById("actual_game");
 	ag.appendChild(dropdown_list);
-
+	ag.appendChild(flip_button);
+	
 	/*
 	function flip_time(n)
 	{

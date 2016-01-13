@@ -115,6 +115,14 @@ select#dropdown_list
 	height: 80px;
 }
 
+button#flip_button
+{
+	position: relative;
+	top: -500px;
+	width: 100px;
+	height: 80px;
+}
+
 /*
 http://stackoverflow.com/questions/7208786/how-to-style-the-option-of-a-html-select
 select#dropdown_list option
