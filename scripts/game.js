@@ -10,6 +10,8 @@ function remove_title()
 	//console.log("Showing \"return\" button");
 
 	//$("#pepe-id").hide();
+	
+	player_initials = document.getElementById('initials').value;
 };
 
 function show_rules()
@@ -24,6 +26,35 @@ function show_rules()
 	
 	document.body.appendChild(rules);
 }
+
+function show_scores()
+{
+	$('#title_menu').hide();
+	$("#exit_to_screen").show();
+	
+	var score_show = document.createElement("DIV");
+	score_show.setAttribute('id','score_show');
+	var tp = document.createElement("P");
+	tp.setAttribute('id','tp');
+	var temp_str = '';
+	
+	SortLocalStorage();
+	
+	for(var i = 0; i < localStorage.length || i<5; i++)
+	{
+		temp_str += (i+1) + ": " + localStorage.key(i) + ", " + localStorage.getItem(localStorage.key(i)) + "<br>";
+	}
+	tp.innerHTML = temp_str;
+	score_show.appendChild(tp);
+	
+	var delete_scores = document.createElement("BUTTON");
+	delete_scores.setAttribute("id","delete_scores");
+	delete_scores.setAttribute("onclick","(function(){var r = confirm('Are you sure you want to do this?');if(r==true)localStorage.clear();})();");
+	delete_scores.appendChild(document.createTextNode("Delete scores"));
+	score_show.appendChild(delete_scores);
+	
+	document.body.appendChild(score_show);
+};
 
 function begin_game()
 {
@@ -60,6 +91,7 @@ function create_pancakes()
 	positions = [];	//The current postions of the pancakes
 	ordered_ints = [];	//Literally just the natural numbers 1-num_cakes
 	turn_number = 0;
+	document.getElementById("current_score").value = 0;
 	
 	/*
 	There is no 'var' in front of 'positions'
@@ -88,7 +120,8 @@ function create_pancakes()
 	{
 		posit[i] = positions[i];
 	}
-	console.log("can be done in " + pancake_sort(posit));
+	min_flips = pancake_sort(posit);
+	//console.log("can be done in " + min_flips);
 	//console.log(positions);
 
 	/*
@@ -108,6 +141,8 @@ function create_pancakes()
 
 	//dropdown_list.appendChild(t);
 	*/
+	
+	print_labels();
 	
 	var optionStr = "";
 
@@ -147,28 +182,6 @@ function create_pancakes()
 	ag.appendChild(dropdown_list);
 	ag.appendChild(flip_button);
 	*/
-	
-	/*
-	function flip_time(n)
-	{
-		//var canvas = document.getElementById("myCanvas");
-		//var ctx = canvas.getContext("2d");
-
-		ctx.clearRect(0,0,canvas.width,canvas.height);
-
-		reverse(positions,0,n);
-
-		for(var i = 0; i < positions.length; i++)
-		{
-			ctx.beginPath();
-			ctx.ellipse(300,25+55*i,75+25*positions[i],25,0,0,2 * Math.PI);
-			ctx.stroke();
-			ctx.fill();
-			ctx.closePath();
-			ctx.fillStyle = "brown";
-		}
-	};
-	*/
 };
 
 function flip_time(n)
@@ -181,6 +194,8 @@ function flip_time(n)
 	var ctx = canvas.getContext("2d");
 
 	ctx.clearRect(0,0,canvas.width,canvas.height);
+	
+	print_labels();
 
 	//parseInt so it doesn't concatenate
 	reverse(positions,0,parseInt(n)+1);
@@ -194,18 +209,44 @@ function flip_time(n)
 		ctx.closePath();
 		ctx.fillStyle = "brown";
 	}
-
-	/*
+	
+	current_score = (100 - 10*(turn_number - min_flips)) * positions.length;
+	document.getElementById("current_score").value = current_score;
+	var ls = localStorage;
+	
 	if(positions.equals(ordered_ints))
 	{
-		console.log("before pause");
-		//http://www.sean.co.uk/a/webdesign/javascriptdelay.shtm
-		setTimeout(return_to_screen(),1500);
-		//return_to_screen();
-		console.log("After pause");
+		alert("Congratulations! You won!");
+		return_to_screen();
+		
+		ls.setItem(player_initials,current_score);
+		
+		/*
+		sc = new score_object(player_initials,current_score);
+		var giggy = document.getElementById('inputfile').files; //$('inputfile')[0].files[0];
+		var fl = new File(giggy);
+		fl.open(sc.name + ',' + sc.score);
+		fl.writeln()
+		*/
 	}
-	*/
 };
+
+function print_labels()
+{
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	
+	for (var  i = 0; i < positions.length; i++)
+	{
+		ctx.fillText(i,500,25+55*i);
+	}
+};
+
+function score_object(nm, sc)
+{
+	this.name = nm;
+	this.score = sc;
+}
 
 //lol probably never gonna use this
 function point(xx,yy)
@@ -259,10 +300,25 @@ function reverse(arr, start, stop)
 	return arr;
 };
 
+//http://stackoverflow.com/questions/3959817/html5-local-storage-sort
+function SortLocalStorage()
+{
+   if(localStorage.length > 0)
+   {
+      var localStorageArray = new Array();
+      for (i=0;i<localStorage.length;i++)
+	  {
+          localStorageArray[i] = localStorage.key(i)+localStorage.getItem(localStorage.key(i));
+      }
+   }
+   var sortedArray = localStorageArray.sort();
+   return sortedArray;
+};
+
 //http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
 function shuffle(o)
 {
-    console.log("shuffling");
+    //console.log("shuffling");
 	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 };

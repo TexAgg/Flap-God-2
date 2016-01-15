@@ -69,6 +69,22 @@ ul#menu li button
 	text-align: left;
 }
 
+#score_show
+{
+	
+}
+
+#tp
+{
+	position: relative;
+	left: auto;
+	top: auto;
+	right: auto;
+	
+	font-size: 2em;
+	font-family: "Verdana", sans-serif;
+}
+
 div#difficulty
 {
 display: none;

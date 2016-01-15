@@ -21,12 +21,14 @@
 		<ul id="menu">
 			<li><button onclick="remove_title()">New Game</button></li>
 			<li><button onclick='show_rules()'>Rules</button></li>
-			<li><button onclick='alert("This feature does not exist yet")'>Scores</button></li>
+			<li><button onclick='show_scores()'>Scores</button></li>
 			<li><button onclick=location.href="http://www.ea.com/">Purchases</button></li>
 			<li><button onclick='window.close()'>Exit</button></li>
 		</ul>
 	</div>
 	<div id="difficulty">
+	Initials:
+	<input id="initials" type="text" maxlength="4" value="na"></input> 
 	Difficulty:
 	<input id="diff_num" type="number" min="2" max="9" value="2"></input>
 	<button onclick="begin_game()">Let's Go!</button>
