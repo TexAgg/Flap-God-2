@@ -45,7 +45,7 @@ function return_to_screen()
 	/*Remove dropdown menu
 	http://stackoverflow.com/questions/19885788/removing-every-child-element-except-first-child*/
 	var dum =  document.getElementById("actual_game");
-	while (dum.lastChild.id !== 'myCanvas')
+	while (dum.lastChild.id !== 'myCanvas'&&dum.lastChild.id!=='current_turn'&&dum.lastChild.id!=='current_score')
 		dum.removeChild(dum.lastChild);
 };
 
@@ -59,12 +59,15 @@ function create_pancakes()
 	var num_cakes = document.getElementById("diff_num").value;
 	positions = [];	//The current postions of the pancakes
 	ordered_ints = [];	//Literally just the natural numbers 1-num_cakes
-
+	turn_number = 0;
+	
 	/*
 	There is no 'var' in front of 'positions'
 	This is a bad hack to make 'positions'
 	accessable to 'flip_time()'
 	*/
+	
+	document.getElementById("current_turn").value = turn_number;
 
 	//Populate the arrays
 	for(var i = 0; i < num_cakes; i++)
@@ -79,6 +82,14 @@ function create_pancakes()
 		shuffle(positions);
 		//console.log(positions);
 	}
+	
+	var posit = [];
+	for (var i = 0; i < positions.length;i++)
+	{
+		posit[i] = positions[i];
+	}
+	console.log("can be done in " + pancake_sort(posit));
+	//console.log(positions);
 
 	/*
 	var t = document.createTextNode("Flip!");
@@ -162,7 +173,9 @@ function create_pancakes()
 
 function flip_time(n)
 {
-	console.log("Calling flip_time()");
+	turn_number++;
+	document.getElementById("current_turn").value = turn_number;
+	//console.log("Calling flip_time()");
 
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
@@ -206,14 +219,14 @@ function reverse(arr, start, stop)
 {
 	stop=stop.valueOf();
 
-	console.log("start="+start);
-	console.log("stop="+stop);
-	console.log(arr);
+	//console.log("start="+start);
+	//console.log("stop="+stop);
+	//console.log(arr);
 
 	if (start >= stop || stop>arr.length)
 	{
-		console.log("Error");
-		return;
+		//console.log("Error");
+		return arr;
 	}
 
 	/*
@@ -230,7 +243,7 @@ function reverse(arr, start, stop)
 	//http://www.cplusplus.com/reference/algorithm/reverse/
 	while(start!=stop && start!=--stop)
 	{
-		console.log("Swapping " + start + " and " + stop);
+		//console.log("Swapping " + start + " and " + stop);
 
 		var dum;
 
@@ -241,15 +254,16 @@ function reverse(arr, start, stop)
 		++start;
 	}
 
-	console.log(arr);
+	//console.log(arr);
 
-	return(arr);
+	return arr;
 };
 
 //http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
 function shuffle(o)
 {
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    console.log("shuffling");
+	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 };
 
