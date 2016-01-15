@@ -1,15 +1,12 @@
+//game.js
+
 function remove_title()
 {
 	$("#title_menu").hide();
-	//console.log("Removing title");
 
 	$("#difficulty").show();
-	//console.log("Showing difficulty");
 
 	$("#exit_to_screen").show();
-	//console.log("Showing \"return\" button");
-
-	//$("#pepe-id").hide();
 	
 	player_initials = document.getElementById('initials').value;
 };
@@ -27,6 +24,8 @@ function show_rules()
 	document.body.appendChild(rules);
 }
 
+/*Doesn't show up on all browsers.
+Shows up on Chrome for sure*/
 function show_scores()
 {
 	$('#title_menu').hide();
@@ -60,7 +59,6 @@ function begin_game()
 {
 	$("#difficulty").hide();
 	$("#actual_game").show();
-	//$("#myCanvas").show();
 
 	create_pancakes();
 };
@@ -70,10 +68,7 @@ function return_to_screen()
 	//http://stackoverflow.com/questions/1535331/how-to-hide-all-elements-except-one-using-jquery
 	$("body>*").hide();
 	$("#title_menu").show();
-	//$("#pepe-id").show();
-	//$("#actual_game").empty();
 
-	/*Remove dropdown menu
 	http://stackoverflow.com/questions/19885788/removing-every-child-element-except-first-child*/
 	var dum =  document.getElementById("actual_game");
 	while (dum.lastChild.id !== 'myCanvas'&&dum.lastChild.id!=='current_turn'&&dum.lastChild.id!=='current_score')
@@ -121,26 +116,8 @@ function create_pancakes()
 		posit[i] = positions[i];
 	}
 	min_flips = pancake_sort(posit);
-	//console.log("can be done in " + min_flips);
-	//console.log(positions);
-
-	/*
-	var t = document.createTextNode("Flip!");
-
-	//Dropdown list to flip pancakes
-	//Buttons would be ideal if i can figure them out
-	var dropdown_list = document.createElement("select");
-	dropdown_list.setAttribute("id","dropdown_list");
-	//dropdown_list.setAttribute("onchange", "flip_time(this.value)");
-	var optionStr = '';
-
-	var flip_button = document.createElement("button");
-	flip_button.setAttribute("id", "flip_button");
-	flip_button.setAttribute("onclick","flip_time(dropdown_list.value)");
-	flip_button.appendChild(t);
-
-	//dropdown_list.appendChild(t);
-	*/
+	
+	alert("Can be done in " + min_flips + " flips");
 	
 	print_labels();
 	
@@ -159,15 +136,6 @@ function create_pancakes()
 		ctx.stroke();
 		ctx.fill();
 		ctx.closePath();
-		//ctx.fillStyle = "brown";
-		
-		//b = document.createElement("BUTTON");
-		//b.setAttribute("onclick","flip_time(i)");
-		//ag.appendChild(b);
-
-		//optionStr+="<option value="+i+">"+i+"</option>";
-		
-		//var label = document.createTextNode(i);
 		
 		optionStr+="<button onclick=flip_time("+i+")>"+i+"</button>";
 	}
@@ -175,20 +143,12 @@ function create_pancakes()
 	dumb.innerHTML += optionStr;
 	
 	//want the buttons vertical and to the right
-
-	/*
-	dropdown_list.innerHTML = optionStr;
-	//var ag = document.getElementById("actual_game");
-	ag.appendChild(dropdown_list);
-	ag.appendChild(flip_button);
-	*/
 };
 
 function flip_time(n)
 {
 	turn_number++;
 	document.getElementById("current_turn").value = turn_number;
-	//console.log("Calling flip_time()");
 
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
@@ -220,14 +180,6 @@ function flip_time(n)
 		return_to_screen();
 		
 		ls.setItem(player_initials,current_score);
-		
-		/*
-		sc = new score_object(player_initials,current_score);
-		var giggy = document.getElementById('inputfile').files; //$('inputfile')[0].files[0];
-		var fl = new File(giggy);
-		fl.open(sc.name + ',' + sc.score);
-		fl.writeln()
-		*/
 	}
 };
 
@@ -237,9 +189,7 @@ function print_labels()
 	var ctx = canvas.getContext("2d");
 	
 	for (var  i = 0; i < positions.length; i++)
-	{
 		ctx.fillText(i,500,25+55*i);
-	}
 };
 
 function score_object(nm, sc)
@@ -248,44 +198,17 @@ function score_object(nm, sc)
 	this.score = sc;
 }
 
-//lol probably never gonna use this
-function point(xx,yy)
-{
-	this.x = xx;
-	this.y = yy;
-};
-
 //Bad function for reversing an array
 function reverse(arr, start, stop)
 {
 	stop=stop.valueOf();
 
-	//console.log("start="+start);
-	//console.log("stop="+stop);
-	//console.log(arr);
-
 	if (start >= stop || stop>arr.length)
-	{
-		//console.log("Error");
 		return arr;
-	}
-
-	/*
-	for(var i = start; i<stop; i++)
-	{
-		var dum;
-
-		dum = arr[i];
-		arr[i] = arr[stop-i];
-		arr[stop-i] = dum;
-	}
-	*/
 
 	//http://www.cplusplus.com/reference/algorithm/reverse/
 	while(start!=stop && start!=--stop)
 	{
-		//console.log("Swapping " + start + " and " + stop);
-
 		var dum;
 
 		dum = arr[start];
@@ -294,8 +217,6 @@ function reverse(arr, start, stop)
 
 		++start;
 	}
-
-	//console.log(arr);
 
 	return arr;
 };
