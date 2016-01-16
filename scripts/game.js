@@ -37,11 +37,13 @@ function show_scores()
 	tp.setAttribute('id','tp');
 	var temp_str = '';
 	
-	SortLocalStorage();
+	var temp_array = SortLocalStorage();
 	
-	for(var i = 0; i < localStorage.length || i<5; i++)
+	//Doesn't always work if more than one player gets the same score
+	for(var i = 0; i < localStorage.length; i++)
 	{
-		temp_str += (i+1) + ": " + localStorage.key(i) + ", " + localStorage.getItem(localStorage.key(i)) + "<br>";
+		//temp_str += (i+1) + ": " + localStorage.key(i) + ", " + localStorage.getItem(localStorage.key(i)) + "<br>";
+		temp_str += temp_array[i] + ',' + localStorage.getItem(temp_array[i]) + '<br>';
 	}
 	tp.innerHTML = temp_str;
 	score_show.appendChild(tp);
@@ -179,7 +181,7 @@ function flip_time(n)
 		alert("Congratulations! You won!");
 		return_to_screen();
 		
-		ls.setItem(player_initials,current_score);
+		localStorage.setItem(current_score,player_initials);
 	}
 };
 
@@ -192,11 +194,13 @@ function print_labels()
 		ctx.fillText(i,500,25+55*i);
 };
 
+/*
 function score_object(nm, sc)
 {
 	this.name = nm;
 	this.score = sc;
 }
+*/
 
 //Bad function for reversing an array
 function reverse(arr, start, stop)
@@ -226,13 +230,14 @@ function SortLocalStorage()
 {
    if(localStorage.length > 0)
    {
-      var localStorageArray = new Array();
+      var len = localStorage.length;
+	  var localStorageArray = new Array();
       for (i=0;i<localStorage.length;i++)
 	  {
-          localStorageArray[i] = localStorage.key(i)+localStorage.getItem(localStorage.key(i));
+          localStorageArray[len - i] = localStorage.key(i);//+localStorage.getItem(localStorage.key(i));
       }
    }
-   var sortedArray = localStorageArray.sort();
+   var sortedArray = localStorageArray.sort(function(a, b){return b-a});
    return sortedArray;
 };
 
