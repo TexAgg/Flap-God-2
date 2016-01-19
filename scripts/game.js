@@ -67,14 +67,18 @@ function begin_game()
 
 function return_to_screen()
 {
+	document.location.reload();
+	
+	/*
 	//http://stackoverflow.com/questions/1535331/how-to-hide-all-elements-except-one-using-jquery
 	$("body>*").hide();
 	$("#title_menu").show();
 
-	http://stackoverflow.com/questions/19885788/removing-every-child-element-except-first-child*/
+	//http://stackoverflow.com/questions/19885788/removing-every-child-element-except-first-child
 	var dum =  document.getElementById("actual_game");
 	while (dum.lastChild.id !== 'myCanvas'&&dum.lastChild.id!=='current_turn'&&dum.lastChild.id!=='current_score')
 		dum.removeChild(dum.lastChild);
+	*/
 };
 
 function create_pancakes()
