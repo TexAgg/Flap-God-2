@@ -2,7 +2,7 @@
 
 function test_diff()
 {
-	if(parseInt(document.getElementById("diff_num").value)<=9 & document.getElementById("diff_num").value >1)
+	if(parseInt(document.getElementById("diff_num").value)<=9 & parseInt(document.getElementById("diff_num").value)>=2)
 		begin_game();
 	else
 		alert("Please enter a valid input!");
@@ -96,7 +96,7 @@ function create_pancakes()
 
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 
-	var num_cakes = document.getElementById("diff_num").value;
+	var num_cakes = parseInt(document.getElementById("diff_num").value);
 	positions = [];	//The current postions of the pancakes
 	ordered_ints = [];	//Literally just the natural numbers 1-num_cakes
 	turn_number = 0;
@@ -131,7 +131,7 @@ function create_pancakes()
 	}
 	min_flips = pancake_sort(posit);
 	
-	alert("Can be done in " + min_flips + " flips");
+	//alert("Can be done in " + min_flips + " flips");
 	
 	print_labels();
 	
@@ -151,10 +151,12 @@ function create_pancakes()
 		ctx.fill();
 		ctx.closePath();
 		
-		optionStr+="<button onclick=flip_time("+i+")>"+i+"</button>";
+		optionStr+="<button onclick=flip_time("+i+")>"+(i+1)+"</button>";
 	}
 	
 	dumb.innerHTML += optionStr;
+	
+	alert("Can be done in " + min_flips + " flips");
 	
 	//want the buttons vertical and to the right
 };
@@ -203,7 +205,7 @@ function print_labels()
 	var ctx = canvas.getContext("2d");
 	
 	for (var  i = 0; i < positions.length; i++)
-		ctx.fillText(i,500,25+55*i);
+		ctx.fillText((i+1),500,25+55*i);
 };
 
 /*
