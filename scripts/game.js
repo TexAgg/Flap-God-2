@@ -1,5 +1,13 @@
 //game.js
 
+function test_diff()
+{
+	if(parseInt(document.getElementById("diff_num").value)<=9 & document.getElementById("diff_num").value >1)
+		begin_game();
+	else
+		alert("Please enter a valid input!");
+}
+
 function remove_title()
 {
 	$("#title_menu").hide();
