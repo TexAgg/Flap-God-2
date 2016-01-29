@@ -8,6 +8,17 @@ function test_diff()
 		alert("Please enter a valid input!");
 }
 
+function muting()
+{
+	var mute = document.getElementById('mutebox').checked;
+	//console.log(mute);
+	var em = document.getElementById('em');
+	
+	if(mute) em.muted = true;
+	else em.muted = false;
+	
+}
+
 function remove_title()
 {
 	$("#title_menu").hide();
