@@ -1,26 +1,13 @@
 //game.js
 
-function test_diff()
-{
-	if(parseInt(document.getElementById("diff_num").value)<=9 & parseInt(document.getElementById("diff_num").value)>=2)
+function test_diff(){
+	if(parseInt(document.getElementById("diff_num").value)<=9 & parseInt(document.getElementById("diff_num").value >1))
 		begin_game();
 	else
 		alert("Please enter a valid input!");
 }
 
-function muting()
-{
-	var mute = document.getElementById('mutebox').checked;
-	//console.log(mute);
-	var em = document.getElementById('em');
-	
-	if(mute) em.muted = true;
-	else em.muted = false;
-	
-}
-
-function remove_title()
-{
+function remove_title(){
 	$("#title_menu").hide();
 
 	$("#difficulty").show();
@@ -30,8 +17,7 @@ function remove_title()
 	player_initials = document.getElementById('initials').value;
 };
 
-function show_rules()
-{
+function show_rules(){
 	//remove_title();
 	$('#title_menu').hide();
 	$("#exit_to_screen").show();
@@ -45,8 +31,7 @@ function show_rules()
 
 /*Doesn't show up on all browsers.
 Shows up on Chrome for sure*/
-function show_scores()
-{
+function show_scores(){
 	$('#title_menu').hide();
 	$("#exit_to_screen").show();
 	
@@ -59,8 +44,7 @@ function show_scores()
 	var temp_array = SortLocalStorage();
 	
 	//Doesn't always work if more than one player gets the same score
-	for(var i = 0; i < localStorage.length; i++)
-	{
+	for(var i = 0; i < localStorage.length; i++){
 		//temp_str += (i+1) + ": " + localStorage.key(i) + ", " + localStorage.getItem(localStorage.key(i)) + "<br>";
 		temp_str += temp_array[i] + ',' + localStorage.getItem(temp_array[i]) + '<br>';
 	}
@@ -76,16 +60,14 @@ function show_scores()
 	document.body.appendChild(score_show);
 };
 
-function begin_game()
-{
+function begin_game(){
 	$("#difficulty").hide();
 	$("#actual_game").show();
 
 	create_pancakes();
 };
 
-function return_to_screen()
-{
+function return_to_screen(){
 	document.location.reload();
 	
 	/*
@@ -100,8 +82,7 @@ function return_to_screen()
 	*/
 };
 
-function create_pancakes()
-{
+function create_pancakes(){
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 
@@ -122,22 +103,19 @@ function create_pancakes()
 	document.getElementById("current_turn").value = turn_number;
 
 	//Populate the arrays
-	for(var i = 0; i < num_cakes; i++)
-	{
+	for(var i = 0; i < num_cakes; i++){
 		positions[i] = i;
 		ordered_ints[i] = i;
 	}
 
 	//Shuffle the positions
-	while (positions.equals(ordered_ints))
-	{
+	while (positions.equals(ordered_ints)){
 		shuffle(positions);
 		//console.log(positions);
 	}
 	
 	var posit = [];
-	for (var i = 0; i < positions.length;i++)
-	{
+	for (var i = 0; i < positions.length;i++){
 		posit[i] = positions[i];
 	}
 	min_flips = pancake_sort(posit);
@@ -153,8 +131,7 @@ function create_pancakes()
 	dumb.setAttribute("id","dumb");
 	ag.appendChild(dumb);
 	
-	for(var i = 0; i < positions.length; i++)
-	{
+	for(var i = 0; i < positions.length; i++){
 		ctx.fillStyle = "brown";
 		ctx.beginPath();
 		ctx.ellipse(300,25+55*i,75+25*positions[i],25,0,0,2 * Math.PI);
@@ -172,8 +149,7 @@ function create_pancakes()
 	//want the buttons vertical and to the right
 };
 
-function flip_time(n)
-{
+function flip_time(n){
 	turn_number++;
 	document.getElementById("current_turn").value = turn_number;
 
@@ -187,8 +163,7 @@ function flip_time(n)
 	//parseInt so it doesn't concatenate
 	reverse(positions,0,parseInt(n)+1);
 
-	for(var i = 0; i < positions.length; i++)
-	{
+	for(var i = 0; i < positions.length; i++){
 		ctx.beginPath();
 		ctx.ellipse(300,25+55*i,75+25*positions[i],25,0,0,2 * Math.PI);
 		ctx.stroke();
@@ -201,8 +176,7 @@ function flip_time(n)
 	document.getElementById("current_score").value = current_score;
 	var ls = localStorage;
 	
-	if(positions.equals(ordered_ints))
-	{
+	if(positions.equals(ordered_ints)){
 		alert("Congratulations! You won!");
 		return_to_screen();
 		
@@ -210,34 +184,23 @@ function flip_time(n)
 	}
 };
 
-function print_labels()
-{
+function print_labels(){
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 	
 	for (var  i = 0; i < positions.length; i++)
-		ctx.fillText((i+1),500,25+55*i);
+		ctx.fillText(i,500,25+55*i);
 };
 
-/*
-function score_object(nm, sc)
-{
-	this.name = nm;
-	this.score = sc;
-}
-*/
-
 //Bad function for reversing an array
-function reverse(arr, start, stop)
-{
+function reverse(arr, start, stop){
 	stop=stop.valueOf();
 
 	if (start >= stop || stop>arr.length)
 		return arr;
 
 	//http://www.cplusplus.com/reference/algorithm/reverse/
-	while(start!=stop && start!=--stop)
-	{
+	while(start!=stop && start!=--stop){
 		var dum;
 
 		dum = arr[start];
@@ -251,14 +214,11 @@ function reverse(arr, start, stop)
 };
 
 //http://stackoverflow.com/questions/3959817/html5-local-storage-sort
-function SortLocalStorage()
-{
-   if(localStorage.length > 0)
-   {
+function SortLocalStorage(){
+   if(localStorage.length > 0){
       var len = localStorage.length;
 	  var localStorageArray = new Array();
-      for (i=0;i<localStorage.length;i++)
-	  {
+      for (i=0;i<localStorage.length;i++){
           localStorageArray[len - i] = localStorage.key(i);//+localStorage.getItem(localStorage.key(i));
       }
    }
@@ -267,8 +227,7 @@ function SortLocalStorage()
 };
 
 //http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
-function shuffle(o)
-{
+function shuffle(o){
     //console.log("shuffling");
 	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;

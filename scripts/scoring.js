@@ -1,19 +1,16 @@
 //http://www.ccodechamp.com/c-program-of-pancake-sort-algorithm-c-code-champ/
 
-function do_flip(list, length, num)
-{
+function do_flip(list, length, num){
     var swap;
     var i = 0;
-    for(i;i<--num;i++)
-    {
+    for(i;i<--num;i++){
         swap=list[i];
         list[i]=list[num];
         list[num]=swap;
     }
 };
 
-function pancake_sort(list)
-{
+function pancake_sort(list){
    length = list.length;
    
    //If it's less than 2 long, just return it as sorting isn't really needed...
@@ -23,12 +20,10 @@ function pancake_sort(list)
     var i,a,max_num_pos,moves;
     moves=0;
 
-    for(i=length;i>1;i--)
-    {
+    for(i=length;i>1;i--){
    //Find position of the max number in pos(0) to pos(i)
         max_num_pos=0;
-        for(a=0;a<i;a++)
-        {
+        for(a=0;a<i;a++){
             if(list[a]>list[max_num_pos])
                 max_num_pos=a;
         }
@@ -38,8 +33,7 @@ function pancake_sort(list)
             continue;
 
     //Get the found max number to the beginning of the list (unless it already is)
-        if(max_num_pos)
-        {
+        if(max_num_pos){
             moves++;
             do_flip(list, length, max_num_pos+1);
         }

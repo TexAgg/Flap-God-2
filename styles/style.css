@@ -3,12 +3,6 @@ body
 	background: #99e6ff;
 }
 
-div#mute
-{
-	position: absolute;
-	right: 10px;
-}
-
 button
 {
 	/*http://www.w3schools.com/html/tryit.asp?filename=tryhtml_lists_menu*/
