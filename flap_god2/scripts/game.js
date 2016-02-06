@@ -1,7 +1,7 @@
 //game.js
 
 function test_diff(){
-	if(parseInt(document.getElementById("diff_num").value)<=9 & parseInt(document.getElementById("diff_num").value >1))
+	if(parseInt(document.getElementById("diff_num").value)<=9 & parseInt(document.getElementById("diff_num").value)>=2)
 		begin_game();
 	else
 		alert("Please enter a valid input!");
