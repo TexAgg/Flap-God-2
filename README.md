@@ -6,4 +6,4 @@ or download the source files and open index.html in whatever browser you use.
 
 # Instructions
 Download the source files. 
-In the command prompt, after moving to the appropriate directory, type 'make', and then 'make run'.
+In the command prompt, after moving to the appropriate directory, type `make`, and then `make run`.
