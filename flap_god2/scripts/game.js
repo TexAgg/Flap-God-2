@@ -199,7 +199,7 @@ function print_labels(){
 	var ctx = canvas.getContext("2d");
 	
 	for (var  i = 0; i < positions.length; i++)
-		ctx.fillText(i,500,25+55*i);
+		ctx.fillText(i,480+12*positions.length,25+55*i);
 };
 
 //Bad function for reversing an array
