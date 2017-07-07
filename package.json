@@ -1,0 +1,16 @@
+{
+  "name": "Flap-God-2",
+  "version": "2.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/TexAgg/Flap-God-2.git",
+  "author": "Matt Gaikema <mgaikema1@protonmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/js-cookie": "^2.0.28",
+    "js-cookie": "^2.1.4",
+    "ts-loader": "^2.2.2",
+    "typescript": "^2.4.1",
+    "webpack": "^3.1.0"
+  },
+  "dependencies": {}
+}
